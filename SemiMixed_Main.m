@@ -22,6 +22,9 @@ KbName('UnifyKeyNames');
 diary('log.txt'); %create a verbatim copy of your MATLAB session in a disk file (excluding graphics).
 try
     DefaultVariables
+    
+      %Create OutputResp file 
+    OutputResp = fopen(sprintf([SubjectID date '.txt']),'w');
    
     [win1] = Screen('OpenWindow', screenNum); %Initiate the screen window
     
@@ -60,10 +63,7 @@ try
     ExpStart=GetSecs; %Query time to load GetSec mex
     WaitSecs(0.005); %wait for 5ms to load WaitSecs mex
     %%
-     %Write testing session info to text file.
-    
-    %Create OutputResp file 
-    OutputResp = fopen(sprintf([SubjectID date '.txt']),'w');
+     %Write testing session info to text file
     
     %Write Subject ID into OutputResp file
     fprintf(OutputResp, '%s\t %s\n', 'Subject_Number:', SubjectID);
